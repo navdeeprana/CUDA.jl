@@ -265,6 +265,8 @@ julia> a = Random.rand!(CUDA.default_rng(), a)
  0.46691537
 ```
 
+By default, CUDA.jl uses `CURAND.default_rng()` to generate random numbers, as they offer better performance.
+
 CURAND also supports generating lognormal and Poisson-distributed numbers:
 
 ```jldoctest
