@@ -316,7 +316,9 @@ are a few differences and considerations that stem from the design of a parallel
 
 - the default RNG uses global state; it is undefined behavior to use multiple instances
 - kernels automatically seed the RNG with a unique seed passed from the host, ensuring
-  that multiple invocations of the same kernel will produce different results
+  that multiple invocations of the same kernel will produce different results. The seed is generated
+  using the global RNG, `Random.default_rng()`. Thus, one way to reproduce random number sequences is
+  by seeding the global RNG.
 - manual seeding is possible by calling `Random.seed!`, however, the RNG uses warp-shared
   state, so at least one thread per warp should seed, and all seeds within a warp should be
   identical
